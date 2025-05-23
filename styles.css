@@ -238,6 +238,12 @@ body {
     margin: 0 auto;
 }
 
+@media (min-width: 1201px) {
+    .story-content {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
 .story-content h2 {
     font-size: 4rem;
     margin-bottom: 2.5rem;
@@ -525,6 +531,10 @@ footer {
         gap: 3rem;
         max-width: 1400px;
     }
+
+    .story-content {
+        grid-template-columns: 2fr 1fr;
+    }
 }
 
 @media (min-width: 2001px) {
@@ -560,6 +570,10 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         gap: 4rem;
         max-width: 1600px;
+    }
+
+    .story-content {
+        grid-template-columns: 2fr 1fr;
     }
 }
 
@@ -727,6 +741,59 @@ footer {
     }
 }
 
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero-content {
+        margin-left: 1rem;
+    }
+
+    .glitch-text {
+        font-size: 3rem;
+    }
+
+    .story-highlight {
+        font-size: 1.75rem;
+    }
+
+    .story-text {
+        font-size: 1.5rem;
+    }
+
+    .expertise-grid,
+    .projects-grid {
+        gap: 1.25rem;
+    }
+
+    .contact-popup .popup-content,
+    .skill-popup .popup-content {
+        padding: 2rem;
+    }
+
+    .fixed-contact {
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.7rem 1.4rem;
+        font-size: 0.9rem;
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .glitch-text {
+        font-size: 2.5rem;
+    }
+
+    .story-highlight {
+        font-size: 1.5rem;
+    }
+
+    .story-text {
+        font-size: 1.25rem;
+    }
+}
 /* Dark Mode is now default */
 @media (prefers-color-scheme: light) {
     :root {
