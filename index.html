@@ -1,190 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heine Bautz - AI Developer</title>
-    <style>
-        :root {
-            --bg-start: #1e1e1e;
-            --bg-end: #0d0d0d;
-            --accent: #5af5ff;
-            --glass-color: rgba(255,255,255,0.1);
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        html, body {
-            height: 100%;
-            overflow: auto;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: #fff;
-        }
-        body {
-            background: radial-gradient(circle at top left, var(--bg-start), var(--bg-end));
-            animation: bgshift 20s linear infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1200px;
-        }
-        #mesh {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        .glass-card {
-            position: relative;
-            backdrop-filter: blur(25px) saturate(160%);
-            -webkit-backdrop-filter: blur(25px) saturate(160%);
-            background-color: var(--glass-color);
-            border-radius: 20px;
-            padding: 4rem 6rem;
-            text-align: center;
-            box-shadow: 0 40px 60px rgba(0,0,0,0.25);
-            transition: transform 0.3s ease;
-            transform-style: preserve-3d;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        section {
-            margin-top: 2rem;
-            text-align: left;
-        }
-        h2 {
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
-        ul {
-            list-style: square inside;
-            margin-left: 1rem;
-        }
-        a {
-            color: var(--accent);
-        }
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-        p {
-            font-size: 1.5rem;
-            opacity: 0.85;
-        }
-        @keyframes bgshift {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heine Bautz – Developer & AI Specialist</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Critical inline styles -->
+  <style>
+    /* SF Pro Display (500–800) */
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: local('SF Pro Display Medium'), local('SF Pro Medium'), local('-apple-system');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: local('SF Pro Display Semibold'), local('SF Pro Semibold'), local('-apple-system');
+      font-weight: 600; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: local('SF Pro Display Bold'), local('SF Pro Bold'), local('-apple-system');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: local('SF Pro Display Heavy'), local('SF Pro Heavy'), local('-apple-system');
+      font-weight: 800; font-style: normal; font-display: swap;
+    }
+
+    /* Typing cursor */
+    .typing-cursor{
+      display:inline-block;width:0;height:1em;
+      border-left:.08em solid currentColor;margin-left:2px;
+      vertical-align:middle;animation:blink 1s steps(1,start) infinite;
+      user-select:none;pointer-events:none;
+    }
+    @keyframes blink{from,to{opacity:1}50%{opacity:0}}
+
+    /* Glitch headline */
+    .glitch-text{position:relative;line-height:1.4;pointer-events:none}
+    .no-js .glitch-text{pointer-events:auto}
+
+    /* RTL tweak */
+    [dir="rtl"] .typing-cursor{
+      border-left:none;border-right:.08em solid currentColor;
+      margin-left:0;margin-right:2px;
+    }
+  </style>
 </head>
+
 <body>
-    <canvas id="mesh"></canvas>
-    <div class="glass-card" id="card">
-        <h1>Heine Bautz</h1>
-        <p id="tagline"></p>
-        <section>
-            <h2>About</h2>
-            <p>AI developer passionate about creating intelligent and ethical solutions. Always pushing the boundaries of what's possible.</p>
-        </section>
-        <section>
-            <h2>Skills</h2>
+  <!-- Custom cursors -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- Floating CTA -->
+  <a href="#contact" class="contact-button fixed-contact">Get in Touch</a>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="glitch-text">
+            Hi, my name is Heine Bautz,<br>
+            I'm a Developer &amp; AI Specialist<span class="typing-cursor" aria-hidden="true"></span>
+          </h1>
+
+          <div class="hero-story">
+            <p class="story-highlight">From the fjords of Norway to the digital frontier</p>
+            <p class="story-text">
+              I speak <span class="highlight">fluent code</span>, dream in <span class="highlight">algorithms</span>,
+              and turn coffee into <span class="highlight">elegant solutions</span>. When I'm not crafting
+              <span class="highlight">AI models</span> or building <span class="highlight">seamless applications</span>,
+              you'll find me exploring the intersection of <span class="highlight">technology</span> and
+              <span class="highlight">human potential</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section id="story" class="section">
+      <div class="container">
+        <div class="story-content">
+          <div class="story-text">
+            <h2>The Story</h2>
+            <p>
+              At 22, I'm a Norwegian developer passionate about pushing the boundaries of what's possible with
+              code—crafting solutions that make a difference.
+            </p>
+          </div>
+
+          <!-- Quick facts -->
+          <div class="stats">
+            <div class="stat-item"><span class="stat-number">22</span><span class="stat-label">Years Old</span></div>
+            <div class="stat-item"><span class="stat-number">C2</span><span class="stat-label">English Proficiency</span></div>
+            <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Programming Languages</span></div>
+            <div class="stat-item"><span class="stat-number">4+</span><span class="stat-label">Years Experience</span></div>
+            <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Project Completion</span></div>
+            <div class="stat-item"><span class="stat-number">15+</span><span class="stat-label">Projects Delivered</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise -->
+    <section id="expertise" class="section">
+      <div class="container">
+        <h2>Areas of Expertise</h2>
+        <div class="expertise-grid">
+          <!-- Frontend -->
+          <article class="expertise-card">
+            <h3>Frontend</h3>
             <ul>
-                <li>Python, TensorFlow &amp; PyTorch</li>
-                <li>JavaScript &amp; Node.js</li>
-                <li>Data engineering &amp; automation</li>
+              <li data-skill="javascript">JavaScript</li>
+              <li data-skill="htmlcss">HTML/CSS</li>
+              <li data-skill="react">React</li>
+              <li data-skill="vue">Vue.js</li>
             </ul>
-        </section>
-        <section>
-            <h2>Projects</h2>
-            <p>From generative art tools to smart assistants, Heine loves shipping polished experiences.</p>
-        </section>
-        <section>
-            <h2>Contact</h2>
-            <p><a href="mailto:heine@example.com">heine@example.com</a></p>
-        </section>
+          </article>
+
+          <!-- Backend -->
+          <article class="expertise-card">
+            <h3>Backend</h3>
+            <ul>
+              <li data-skill="python">Python</li>
+              <li data-skill="nodejs">Node.js</li>
+              <li data-skill="api">API&nbsp;Design</li>
+              <li data-skill="database">Database</li>
+            </ul>
+          </article>
+
+          <!-- AI & ML -->
+          <article class="expertise-card">
+            <h3>AI &amp; ML</h3>
+            <ul>
+              <li data-skill="llm">LLM</li>
+              <li data-skill="lstm">LSTM</li>
+              <li data-skill="transformers">Transformers</li>
+              <li data-skill="neural">Neural&nbsp;Nets</li>
+            </ul>
+          </article>
+
+          <!-- Mobile -->
+          <article class="expertise-card">
+            <h3>Mobile</h3>
+            <ul>
+              <li data-skill="swift">Swift</li>
+              <li data-skill="ios">iOS</li>
+              <li data-skill="reactnative">React&nbsp;Native</li>
+              <li data-skill="flutter">Flutter</li>
+            </ul>
+          </article>
+
+          <!-- DevOps -->
+          <article class="expertise-card">
+            <h3>DevOps</h3>
+            <ul>
+              <li data-skill="git">Git</li>
+              <li data-skill="docker">Docker</li>
+              <li data-skill="cicd">CI/CD</li>
+              <li data-skill="aws">AWS</li>
+            </ul>
+          </article>
+
+          <!-- Data -->
+          <article class="expertise-card">
+            <h3>Data</h3>
+            <ul>
+              <li data-skill="sql">SQL</li>
+              <li data-skill="mongodb">MongoDB</li>
+              <li data-skill="analysis">Data&nbsp;Analysis</li>
+              <li data-skill="etl">ETL</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid"><!-- Injected via JS --></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-content">
+          <h2>Let's Connect</h2>
+          <p>Interested in working together? I'm always open to new projects and opportunities.</p>
+          <a href="mailto:contact@heinebautz.com" class="contact-button">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Heine Bautz. All rights reserved.</p>
     </div>
-<script>
-const canvas = document.getElementById('mesh');
-const ctx = canvas.getContext('2d');
-let width, height, starCount;
-const stars = [];
-const maxDepth = 32;
+  </footer>
 
-function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    starCount = Math.min(Math.floor(width * height / 800), 1000);
-    initStars();
-}
+  <!-- Skill Popup -->
+  <dialog class="skill-popup" id="skillPopup">
+    <button class="popup-close" aria-label="Close">&times;</button>
+    <h3 class="popup-title"></h3>
+    <div class="popup-description"></div>
+    <section class="popup-examples">
+      <h4>Key Applications</h4>
+      <ul class="examples-list"></ul>
+    </section>
+  </dialog>
 
-function initStars() {
-    stars.length = 0;
-    for (let i = 0; i < starCount; i++) {
-        stars.push({
-            x: Math.random() * width - width / 2,
-            y: Math.random() * height - height / 2,
-            z: Math.random() * maxDepth
-        });
-    }
-}
+  <!-- Contact Form Popup -->
+  <dialog class="contact-popup" id="contactPopup">
+    <button class="popup-close" aria-label="Close">&times;</button>
+    <header class="form-header">
+      <h2>Let's Work Together</h2>
+      <p class="form-subtitle">I'll transform your ideas into exceptional digital solutions—or help with an existing project.</p>
+    </header>
 
-function update() {
-    for (const star of stars) {
-        star.z -= 0.2;
-        if (star.z <= 0) star.z = maxDepth;
-    }
-}
+    <form id="contactForm" class="contact-form"
+          action="https://formsubmit.co/heine@marketingsolutions.no" method="POST">
+      <!-- Honeypot -->
+      <input type="text" name="_honey" hidden>
+      <!-- Disable Captcha -->
+      <input type="hidden" name="_captcha" value="false">
+      <!-- Success Page -->
+      <input type="hidden" name="_next" value="https://heinebautz.com">
+      <!-- Email Template -->
+      <input type="hidden" name="_template" value="table">
+      <!-- Subject Template -->
+      <input type="hidden" name="_subject" value="New Project Inquiry from {{name}}">
+      <!-- Autoresponse -->
+      <input type="hidden" name="_autoresponse"
+             value="Thank you for your message! I'll get back to you as soon as possible.">
 
-function draw() {
-    ctx.clearRect(0, 0, width, height);
-    const hue = (Date.now() / 50) % 360;
-    ctx.fillStyle = `hsla(${hue},60%,50%,0.1)`;
-    ctx.fillRect(0, 0, width, height);
-    for (const star of stars) {
-        const k = 128 / star.z;
-        const x = star.x * k + width / 2;
-        const y = star.y * k + height / 2;
-        if (x >= 0 && x <= width && y >= 0 && y <= height) {
-            const size = (1 - star.z / maxDepth) * 3;
-            ctx.fillStyle = `hsl(${hue},80%,80%)`;
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-}
+      <div class="form-group">
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" name="email" placeholder="Your business email" required>
+      </div>
+      <div class="form-group">
+        <input type="text" id="subject" name="subject" placeholder="Project type (e.g., Web App, AI Solution)" required>
+      </div>
+      <div class="form-group">
+        <textarea id="message" name="message"
+                  placeholder="Tell me about your project requirements, timeline, and budget..."
+                  required></textarea>
+      </div>
 
-function frame() {
-    update();
-    draw();
-    requestAnimationFrame(frame);
-}
+      <button type="submit" class="submit-button">
+        <span class="button-text">Send Project Details</span>
+        <span class="button-icon" aria-hidden="true">→</span>
+      </button>
+    </form>
+  </dialog>
 
-const card = document.getElementById('card');
-const tagline = document.getElementById('tagline');
-const taglineText = 'AI Developer \u2013 Building intelligent solutions.';
-let taglineIndex = 0;
-function typeTagline() {
-    tagline.textContent = taglineText.slice(0, taglineIndex++);
-    if (taglineIndex <= taglineText.length) {
-        setTimeout(typeTagline, 80);
-    }
-}
-function handleMove(e) {
-    const x = (e.clientX / width - 0.5) * 30;
-    const y = (e.clientY / height - 0.5) * 30;
-    card.style.transform = `rotateX(${-y}deg) rotateY(${x}deg)`;
-}
-
-window.addEventListener('mousemove', handleMove);
-window.addEventListener('resize', resize);
-window.addEventListener('DOMContentLoaded', typeTagline);
-resize();
-frame();
-</script>
+  <script src="script.js" defer></script>
 </body>
 </html>
