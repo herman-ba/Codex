@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex Apple Design</title>
+    <style>
+        :root {
+            --bg-start: #1e1e1e;
+            --bg-end: #0d0d0d;
+            --accent: #5af5ff;
+            --glass-color: rgba(255,255,255,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+        }
+
+        body {
+            background: radial-gradient(circle at top left, var(--bg-start), var(--bg-end));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+
+        #mesh {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            background-color: var(--glass-color);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            transform-style: preserve-3d;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0 0 1rem;
+        }
+
+        p {
+            margin: 0;
+            font-size: 1.25rem;
+            opacity: 0.85;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: rotateY(-10deg) translateZ(30px); }
+            50% { transform: rotateY(10deg) translateZ(50px); }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mesh"></canvas>
+    <div class="glass-card">
+        <h1>Codex</h1>
+        <p>Impossibly Beautiful</p>
+    </div>
+    <script>
+        const canvas = document.getElementById('mesh');
+        const ctx = canvas.getContext('2d');
+        const stars = [];
+        const starCount = 200;
+        const maxDepth = 32;
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function initStars() {
+            for (let i = 0; i < starCount; i++) {
+                stars[i] = {
+                    x: Math.random() * canvas.width - canvas.width / 2,
+                    y: Math.random() * canvas.height - canvas.height / 2,
+                    z: Math.random() * maxDepth
+                };
+            }
+        }
+
+        function update() {
+            for (let i = 0; i < starCount; i++) {
+                stars[i].z -= 0.2;
+                if (stars[i].z <= 0) {
+                    stars[i].z = maxDepth;
+                }
+            }
+        }
+
+        function draw() {
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < starCount; i++) {
+                const k = 128 / stars[i].z;
+                const x = stars[i].x * k + canvas.width / 2;
+                const y = stars[i].y * k + canvas.height / 2;
+                if (x >= 0 && x <= canvas.width && y >= 0 && y <= canvas.height) {
+                    const size = (1 - stars[i].z / maxDepth) * 3;
+                    ctx.fillStyle = 'white';
+                    ctx.beginPath();
+                    ctx.arc(x, y, size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+        }
+
+        function frame() {
+            update();
+            draw();
+            requestAnimationFrame(frame);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        initStars();
+        frame();
+    </script>
+</body>
+</html>
