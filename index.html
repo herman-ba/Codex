@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codex Apple Design</title>
+    <title>Heine Bautz - AI Developer</title>
     <style>
         :root {
             --bg-start: #1e1e1e;
@@ -18,7 +18,7 @@
         }
         html, body {
             height: 100%;
-            overflow: hidden;
+            overflow: auto;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             color: #fff;
         }
@@ -49,6 +49,23 @@
             box-shadow: 0 40px 60px rgba(0,0,0,0.25);
             transition: transform 0.3s ease;
             transform-style: preserve-3d;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        section {
+            margin-top: 2rem;
+            text-align: left;
+        }
+        h2 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        ul {
+            list-style: square inside;
+            margin-left: 1rem;
+        }
+        a {
+            color: var(--accent);
         }
         h1 {
             font-size: 4rem;
@@ -67,8 +84,28 @@
 <body>
     <canvas id="mesh"></canvas>
     <div class="glass-card" id="card">
-        <h1>Codex</h1>
-        <p>Impossibly Beautiful</p>
+        <h1>Heine Bautz</h1>
+        <p id="tagline"></p>
+        <section>
+            <h2>About</h2>
+            <p>AI developer passionate about creating intelligent and ethical solutions. Always pushing the boundaries of what's possible.</p>
+        </section>
+        <section>
+            <h2>Skills</h2>
+            <ul>
+                <li>Python, TensorFlow &amp; PyTorch</li>
+                <li>JavaScript &amp; Node.js</li>
+                <li>Data engineering &amp; automation</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Projects</h2>
+            <p>From generative art tools to smart assistants, Heine loves shipping polished experiences.</p>
+        </section>
+        <section>
+            <h2>Contact</h2>
+            <p><a href="mailto:heine@example.com">heine@example.com</a></p>
+        </section>
     </div>
 <script>
 const canvas = document.getElementById('mesh');
@@ -128,6 +165,15 @@ function frame() {
 }
 
 const card = document.getElementById('card');
+const tagline = document.getElementById('tagline');
+const taglineText = 'AI Developer \u2013 Building intelligent solutions.';
+let taglineIndex = 0;
+function typeTagline() {
+    tagline.textContent = taglineText.slice(0, taglineIndex++);
+    if (taglineIndex <= taglineText.length) {
+        setTimeout(typeTagline, 80);
+    }
+}
 function handleMove(e) {
     const x = (e.clientX / width - 0.5) * 30;
     const y = (e.clientY / height - 0.5) * 30;
@@ -136,6 +182,7 @@ function handleMove(e) {
 
 window.addEventListener('mousemove', handleMove);
 window.addEventListener('resize', resize);
+window.addEventListener('DOMContentLoaded', typeTagline);
 resize();
 frame();
 </script>
