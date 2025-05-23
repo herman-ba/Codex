@@ -238,6 +238,12 @@ body {
     margin: 0 auto;
 }
 
+@media (min-width: 1201px) {
+    .story-content {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
 .story-content h2 {
     font-size: 4rem;
     margin-bottom: 2.5rem;
@@ -525,6 +531,10 @@ footer {
         gap: 3rem;
         max-width: 1400px;
     }
+
+    .story-content {
+        grid-template-columns: 2fr 1fr;
+    }
 }
 
 @media (min-width: 2001px) {
@@ -560,6 +570,10 @@ footer {
         grid-template-columns: repeat(2, 1fr);
         gap: 4rem;
         max-width: 1600px;
+    }
+
+    .story-content {
+        grid-template-columns: 2fr 1fr;
     }
 }
 
